@@ -1,4 +1,4 @@
-public class NickiMinaj {
+public class NickiM {
     public static void main(String[] args) {
         System.out.println("Hello! I'm NickiMinaj");
         System.out.println("What can I do for you?");
