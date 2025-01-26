@@ -38,6 +38,27 @@ public class NickiMinaj {
                 toDo.get(index).unmark();
                 System.out.println("OK, I've marked this task as not done yet");
                 System.out.println("  " + toDo.get(index));
+            } else if (input.startsWith("todo ")) {
+                String num = input.split(" ")[1];
+                int index = Integer.parseInt(num) - 1;
+                Todo newTask = (Todo) toDo.get(index);
+                System.out.println("Got it. I've added this task");
+                System.out.println("  " + newTask);
+                System.out.println("Now you have " + toDo.size() + "in the list");
+            } else if (input.startsWith("deadline ")) {
+                String num = input.split(" ")[1];
+                int index = Integer.parseInt(num) - 1;
+                Deadline newTask = (Deadline) toDo.get(index);
+                System.out.println("Got it. I've added this task");
+                System.out.println("  " + newTask);
+                System.out.println("Now you have " + toDo.size() + "in the list");
+            } else if (input.startsWith("event ")) {
+                String num = input.split(" ")[1];
+                int index = Integer.parseInt(num) - 1;
+                Event newTask = (Event) toDo.get(index);
+                System.out.println("Got it. I've added this task");
+                System.out.println("  " + newTask);
+                System.out.println("Now you have " + toDo.size() + "in the list");
             } else {
                 System.out.println("added:" + input);
             }
