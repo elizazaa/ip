@@ -13,49 +13,44 @@ public class NickiMinaj {
             String input = scanner.nextLine();
             Task addedTask = new Task(input);
 
-            if (!(input.equalsIgnoreCase("list"))) {
+            if (!(input.equals("list"))) {
                 toDo.add(addedTask);
             }
 
-            if (input.equalsIgnoreCase("bye")) {
+            if (input.equals("bye")) {
                 System.out.println("Imma run away Imma run away aye aye");
                 break;
-            } else if (input.equalsIgnoreCase("list")) {
+            } else if (input.equals("list")) {
                 for (int i = 0; i < toDo.size(); i++) {
                     String output = (i + 1) + ". " + toDo.get(i);
                     System.out.println("Here are the tasks in your list:");
                     System.out.println(output);
                 }
             } else if (input.startsWith("mark ")) {
-                String num = input.split(" ")[1];
-                int index = Integer.parseInt(num) - 1;
+                int index = Integer.parseInt(input.split(" ")[1]) - 1;
                 toDo.get(index).mark();
                 System.out.println("Nice! I've marked this task as done:");
                 System.out.println("  " + toDo.get(index));
             } else if (input.startsWith("unmark ")) {
-                String num = input.split(" ")[1];
-                int index = Integer.parseInt(num) - 1;
+                int index = Integer.parseInt(input.split(" ")[1]) - 1;
                 toDo.get(index).unmark();
                 System.out.println("OK, I've marked this task as not done yet");
                 System.out.println("  " + toDo.get(index));
             } else if (input.startsWith("todo ")) {
-                String num = input.split(" ")[1];
-                int index = Integer.parseInt(num) - 1;
-                Todo newTask = (Todo) toDo.get(index);
+                String description = input.substring(5);
+                Task newTask = new Todo(description);
                 System.out.println("Got it. I've added this task");
                 System.out.println("  " + newTask);
                 System.out.println("Now you have " + toDo.size() + "in the list");
             } else if (input.startsWith("deadline ")) {
-                String num = input.split(" ")[1];
-                int index = Integer.parseInt(num) - 1;
-                Deadline newTask = (Deadline) toDo.get(index);
+                String[] parts = input.substring(9).split(" /by ");
+                Task newTask = new Deadline(parts[0], parts[1]);
                 System.out.println("Got it. I've added this task");
                 System.out.println("  " + newTask);
                 System.out.println("Now you have " + toDo.size() + "in the list");
             } else if (input.startsWith("event ")) {
-                String num = input.split(" ")[1];
-                int index = Integer.parseInt(num) - 1;
-                Event newTask = (Event) toDo.get(index);
+                String[] parts = input.substring(6).split(" /from | /to ");
+                Task newTask = new Event(parts[0], parts[1], parts[2]);
                 System.out.println("Got it. I've added this task");
                 System.out.println("  " + newTask);
                 System.out.println("Now you have " + toDo.size() + "in the list");
