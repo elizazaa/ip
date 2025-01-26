@@ -12,10 +12,10 @@ public class NickiMinaj {
         while (true) {
             String input = scanner.nextLine();
 
-            if (input.equals("bye")) {
+            if (input.equalsIgnoreCase("bye")) {
                 System.out.println("Imma run away Imma run away aye aye");
                 break;
-            } else if (input.equals("list")) {
+            } else if (input.equalsIgnoreCase("list")) {
                 System.out.println("Here are the tasks in your list:");
                 for (int i = 0; i < toDo.size(); i++) {
                     String output = (i + 1) + ". " + toDo.get(i);
@@ -35,7 +35,7 @@ public class NickiMinaj {
                 toDo.get(index).unmark();
                 System.out.println("OK, I've marked this task as not done yet");
                 System.out.println("  " + toDo.get(index));
-            } else if (input.startsWith("todo ")) {
+            } else if (input.startsWith("todo")) {
                 try {
                     String description = input.substring(5);
                     if (description.isEmpty()) {
@@ -45,11 +45,11 @@ public class NickiMinaj {
                     toDo.add(newTask);
                     System.out.println("Got it. I've added this task");
                     System.out.println("  " + newTask);
-                    System.out.println("Now you have " + toDo.size() + "in the list");
+                    System.out.println("Now you have " + toDo.size() + " in the list");
                 } catch (DukeException e) {
                     System.out.println(e.getMessage());
                 }
-            } else if (input.startsWith("deadline ")) {
+            } else if (input.startsWith("deadline")) {
                 try {
                     String[] parts = input.substring(9).split(" /by ");
                     String description = parts[0];
@@ -60,11 +60,11 @@ public class NickiMinaj {
                     toDo.add(newTask);
                     System.out.println("Got it. I've added this task");
                     System.out.println("  " + newTask);
-                    System.out.println("Now you have " + toDo.size() + "in the list");
+                    System.out.println("Now you have " + toDo.size() + " in the list");
                 } catch (DukeException e) {
                     System.out.println(e.getMessage());
                 }
-            } else if (input.startsWith("event ")) {
+            } else if (input.startsWith("event")) {
                 try {
                     String[] parts = input.substring(6).split(" /from | /to ");
                     String description = parts[0];
@@ -75,7 +75,22 @@ public class NickiMinaj {
                     toDo.add(newTask);
                     System.out.println("Got it. I've added this task");
                     System.out.println("  " + newTask);
-                    System.out.println("Now you have " + toDo.size() + "in the list");
+                    System.out.println("Now you have " + toDo.size() + " in the list");
+                } catch (DukeException e) {
+                    System.out.println(e.getMessage());
+                }
+            } else if (input.startsWith("delete")) {
+                try {
+                    int index = Integer.parseInt(input.split(" ")[1]) - 1;
+                    if (index < 0 || index >= toDo.size()) {
+                        throw new DukeException("OOPS!!! The task number you specified is invalid.");
+                    }
+                    Task removedTask = toDo.remove(index);
+                    System.out.println("Noted. I've removed this task:");
+                    System.out.println("  " + removedTask);
+                    System.out.println("Now you have " + toDo.size() + " tasks in the list.");
+                } catch (NumberFormatException e) {
+                    System.out.println("OOPS!!! Please specify a valid task number to delete.");
                 } catch (DukeException e) {
                     System.out.println(e.getMessage());
                 }
