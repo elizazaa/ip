@@ -36,28 +36,55 @@ public class NickiMinaj {
                 System.out.println("OK, I've marked this task as not done yet");
                 System.out.println("  " + toDo.get(index));
             } else if (input.startsWith("todo ")) {
-                String description = input.substring(5);
-                Task newTask = new Todo(description);
-                toDo.add(newTask);
-                System.out.println("Got it. I've added this task");
-                System.out.println("  " + newTask);
-                System.out.println("Now you have " + toDo.size() + "in the list");
+                try {
+                    String description = input.substring(5);
+                    if (description.isEmpty()) {
+                        throw new DukeException("OOPS!!! The description of a todo cannot be empty.");
+                    }
+                    Task newTask = new Todo(description);
+                    toDo.add(newTask);
+                    System.out.println("Got it. I've added this task");
+                    System.out.println("  " + newTask);
+                    System.out.println("Now you have " + toDo.size() + "in the list");
+                } catch (DukeException e) {
+                    System.out.println(e.getMessage());
+                }
             } else if (input.startsWith("deadline ")) {
-                String[] parts = input.substring(9).split(" /by ");
-                Task newTask = new Deadline(parts[0], parts[1]);
-                toDo.add(newTask);
-                System.out.println("Got it. I've added this task");
-                System.out.println("  " + newTask);
-                System.out.println("Now you have " + toDo.size() + "in the list");
+                try {
+                    String[] parts = input.substring(9).split(" /by ");
+                    String description = parts[0];
+                    if (description.isEmpty()) {
+                        throw new DukeException("OOPS!!! The description of a deadline cannot be empty.");
+                    }
+                    Task newTask = new Deadline(parts[0], parts[1]);
+                    toDo.add(newTask);
+                    System.out.println("Got it. I've added this task");
+                    System.out.println("  " + newTask);
+                    System.out.println("Now you have " + toDo.size() + "in the list");
+                } catch (DukeException e) {
+                    System.out.println(e.getMessage());
+                }
             } else if (input.startsWith("event ")) {
-                String[] parts = input.substring(6).split(" /from | /to ");
-                Task newTask = new Event(parts[0], parts[1], parts[2]);
-                toDo.add(newTask);
-                System.out.println("Got it. I've added this task");
-                System.out.println("  " + newTask);
-                System.out.println("Now you have " + toDo.size() + "in the list");
+                try {
+                    String[] parts = input.substring(6).split(" /from | /to ");
+                    String description = parts[0];
+                    if (description.isEmpty()) {
+                        throw new DukeException("OOPS!!! The description of an event cannot be empty.");
+                    }
+                    Task newTask = new Event(description, parts[1], parts[2]);
+                    toDo.add(newTask);
+                    System.out.println("Got it. I've added this task");
+                    System.out.println("  " + newTask);
+                    System.out.println("Now you have " + toDo.size() + "in the list");
+                } catch (DukeException e) {
+                    System.out.println(e.getMessage());
+                }
             } else {
-                System.out.println("added:" + input);
+                try {
+                    throw new DukeException("OOPS!!! I'm sorry, but I don't know what that means :-(");
+                } catch (DukeException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
         scanner.close();
