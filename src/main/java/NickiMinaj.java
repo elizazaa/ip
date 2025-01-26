@@ -7,19 +7,21 @@ public class NickiMinaj {
         System.out.println("Hello! I'm NickiMinaj \n" +
                 "I am not Jasmine, I am Aladdin");
         System.out.println("Watchu wanna do, Barb?");
+        List<String> toDo = new ArrayList<>();
 
         while (true) {
             String input = scanner.nextLine();
+            if (!(input.equalsIgnoreCase("list"))) {
+                toDo.add(input);
+            }
 
-            List<String> toDo = new ArrayList<>();
-            toDo.add(input);
-
-            if (input.equals("bye")) {
+            if (input.equalsIgnoreCase("bye")) {
                 System.out.println("Imma run away Imma run away aye");
                 break;
-            } else if (input.equals("list")) {
-                for (String task : toDo) {
-                    System.out.println(task);
+            } else if (input.equalsIgnoreCase("list")) {
+                for (int i = 0; i < toDo.size(); i++) {
+                    String output = (i + 1) + ". " + toDo.get(i);
+                    System.out.println(output);
                 }
             } else {
                 System.out.println("added:" + input);
