@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class NickiMinaj {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Hello! I'm NickiMinaj \n" +
+        System.out.println("Hello! I'm NickiMinaj\n" +
                 "I am not Jasmine, I am Aladdin");
         System.out.println("Watchu wanna do, Barb?");
         List<Task> toDo = new ArrayList<>();
