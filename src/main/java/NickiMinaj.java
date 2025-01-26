@@ -16,7 +16,7 @@ public class NickiMinaj {
             }
 
             if (input.equalsIgnoreCase("bye")) {
-                System.out.println("Imma run away Imma run away aye");
+                System.out.println("Imma run away Imma run away aye aye");
                 break;
             } else if (input.equalsIgnoreCase("list")) {
                 for (int i = 0; i < toDo.size(); i++) {
