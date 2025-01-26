@@ -1,8 +1,8 @@
 public class Task {
-    private String toDo;
+    private String description;
     private boolean isDone;
     public Task(String description) {
-        this.toDo = description;
+        this.description = description;
         this.isDone = false;
     }
 
@@ -10,16 +10,16 @@ public class Task {
         isDone = true;
     }
 
-    public void unMark() {
+    public void unmark() {
         isDone = false;
     }
 
     public String getStatusIcon() {
         return (isDone ? "X" : " "); // X for done, blank for not done
     }
-    
+
     @Override
     public String toString() {
-        return "[" + getStatusIcon() + "] " + toDo;
+        return "[" + getStatusIcon() + "] " + description;
     }
 }
