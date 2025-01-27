@@ -1,4 +1,4 @@
-public class Task {
+public abstract class Task {
     private String description;
     private boolean isDone;
     public Task(String description) {
@@ -10,7 +10,7 @@ public class Task {
         this.description = description;
         this.isDone = isDone;
     }
-    
+
     public void mark() {
         isDone = true;
     }
@@ -27,4 +27,6 @@ public class Task {
     public String toString() {
         return "[" + getStatusIcon() + "] " + description;
     }
+
+    public abstract String serialize();
 }
