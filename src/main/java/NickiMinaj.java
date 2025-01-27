@@ -50,7 +50,7 @@ public class NickiMinaj {
                     System.out.println("  " + newTask);
                     System.out.println("Now you have " + toDo.size() + " in the list");
                 } catch (DukeException e) {
-                    System.out.println(e.getMessage());
+                    System.out.println("OOPS!!! Please enter the date in the format d/M/yyyy HHmm");
                 }
             } else if (input.startsWith("deadline")) {
                 try {
@@ -66,7 +66,7 @@ public class NickiMinaj {
                     System.out.println("  " + newTask);
                     System.out.println("Now you have " + toDo.size() + " in the list");
                 } catch (DukeException e) {
-                    System.out.println(e.getMessage());
+                    System.out.println("OOPS!!! Please enter the date in the format d/M/yyyy HHmm.");
                 }
             } else if (input.startsWith("event")) {
                 try {
