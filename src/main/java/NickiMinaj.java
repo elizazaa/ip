@@ -2,12 +2,17 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 public class NickiMinaj {
+    private static Storage storage;
+    private static List<Task> toDo;
     public static void main(String[] args) {
+        storage = new Storage("./data/NickiMinaj.txt");
+        toDo = storage.loadTasks();
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello! I'm NickiMinaj\n" +
                 "I am not Jasmine, I am Aladdin");
         System.out.println("Watchu wanna do, Barb?");
-        List<Task> toDo = new ArrayList<>();
+        toDo = new ArrayList<>();
 
         while (true) {
             String input = scanner.nextLine();
