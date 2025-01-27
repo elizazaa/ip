@@ -12,7 +12,6 @@ public class NickiMinaj {
         System.out.println("Hello! I'm NickiMinaj\n" +
                 "I am not Jasmine, I am Aladdin");
         System.out.println("Watchu wanna do, Barb?");
-        toDo = new ArrayList<>();
 
         while (true) {
             String input = scanner.nextLine();
@@ -26,16 +25,12 @@ public class NickiMinaj {
                     String output = (i + 1) + ". " + toDo.get(i);
                     System.out.println(output);
                 }
-            } else if (input.startsWith("mark ")) {
-                Task addedTask = new Task(input);
-                toDo.add(addedTask);
+            } else if (input.startsWith("mark")) {
                 int index = Integer.parseInt(input.split(" ")[1]) - 1;
                 toDo.get(index).mark();
                 System.out.println("Nice! I've marked this task as done:");
                 System.out.println("  " + toDo.get(index));
-            } else if (input.startsWith("unmark ")) {
-                Task addedTask = new Task(input);
-                toDo.add(addedTask);
+            } else if (input.startsWith("unmark")) {
                 int index = Integer.parseInt(input.split(" ")[1]) - 1;
                 toDo.get(index).unmark();
                 System.out.println("OK, I've marked this task as not done yet");
