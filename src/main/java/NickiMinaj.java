@@ -52,8 +52,8 @@ public class NickiMinaj {
             } else if (input.startsWith("deadline")) {
                 try {
                     String[] parts = input.substring(9).split(" /by ");
-                    String description = parts[0];
-                    if (description.isEmpty()) {
+                    String des = parts[0];
+                    if (des.isEmpty()) {
                         throw new DukeException("OOPS!!! The description of a deadline cannot be empty.");
                     }
                     Task newTask = new Deadline(parts[0], parts[1]);
@@ -67,11 +67,11 @@ public class NickiMinaj {
             } else if (input.startsWith("event")) {
                 try {
                     String[] parts = input.substring(6).split(" /from | /to ");
-                    String description = parts[0];
-                    if (description.isEmpty()) {
+                    String des = parts[0];
+                    if (des.isEmpty()) {
                         throw new DukeException("OOPS!!! The description of an event cannot be empty.");
                     }
-                    Task newTask = new Event(description, parts[1], parts[2]);
+                    Task newTask = new Event(des, parts[1], parts[2]);
                     toDo.add(newTask);
                     System.out.println("Got it. I've added this task");
                     System.out.println("  " + newTask);
