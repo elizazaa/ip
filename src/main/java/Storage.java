@@ -16,7 +16,7 @@ public class Storage {
         List<Task> tasks = new ArrayList<>();
         File file = new File(filePath);
         if (!file.exists()) {
-            //create the file and directories if they dont exist
+            //create the file and directories if they don't exist
             try {
                 file.getParentFile().mkdirs();
                 file.createNewFile();
@@ -62,7 +62,10 @@ public class Storage {
                         LocalDateTime.parse(parts[3], DateTimeFormatter.ofPattern("d/M/yyyy HHmm")),
                         isDone);
             case "E":
-                return new Event(parts[2], parts[3], parts[4], isDone);
+                return new Event(parts[2],
+                        LocalDateTime.parse(parts[3], DateTimeFormatter.ofPattern("d/M/yyyy HHmm")),
+                        LocalDateTime.parse(parts[4], DateTimeFormatter.ofPattern("d/M/yyyy HHmm")),
+                        isDone);
             default:
                 return null;
         }
