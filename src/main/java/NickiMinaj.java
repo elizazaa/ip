@@ -28,11 +28,13 @@ public class NickiMinaj {
             } else if (input.startsWith("mark")) {
                 int index = Integer.parseInt(input.split(" ")[1]) - 1;
                 toDo.get(index).mark();
+                storage.saveTasks(toDo);
                 System.out.println("Nice! I've marked this task as done:");
                 System.out.println("  " + toDo.get(index));
             } else if (input.startsWith("unmark")) {
                 int index = Integer.parseInt(input.split(" ")[1]) - 1;
                 toDo.get(index).unmark();
+                storage.saveTasks(toDo);
                 System.out.println("OK, I've marked this task as not done yet");
                 System.out.println("  " + toDo.get(index));
             } else if (input.startsWith("todo")) {
@@ -43,6 +45,7 @@ public class NickiMinaj {
                     }
                     Task newTask = new Todo(description);
                     toDo.add(newTask);
+                    storage.saveTasks(toDo);
                     System.out.println("Got it. I've added this task");
                     System.out.println("  " + newTask);
                     System.out.println("Now you have " + toDo.size() + " in the list");
@@ -58,6 +61,7 @@ public class NickiMinaj {
                     }
                     Task newTask = new Deadline(parts[0], parts[1]);
                     toDo.add(newTask);
+                    storage.saveTasks(toDo);
                     System.out.println("Got it. I've added this task");
                     System.out.println("  " + newTask);
                     System.out.println("Now you have " + toDo.size() + " in the list");
@@ -73,6 +77,7 @@ public class NickiMinaj {
                     }
                     Task newTask = new Event(des, parts[1], parts[2]);
                     toDo.add(newTask);
+                    storage.saveTasks(toDo);
                     System.out.println("Got it. I've added this task");
                     System.out.println("  " + newTask);
                     System.out.println("Now you have " + toDo.size() + " in the list");
@@ -86,6 +91,7 @@ public class NickiMinaj {
                         throw new DukeException("OOPS!!! The task number you specified is invalid.");
                     }
                     Task removedTask = toDo.remove(index);
+                    storage.saveTasks(toDo);
                     System.out.println("Noted. I've removed this task:");
                     System.out.println("  " + removedTask);
                     System.out.println("Now you have " + toDo.size() + " tasks in the list.");
