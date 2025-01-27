@@ -37,6 +37,17 @@ public class Storage {
         return tasks;
     }
 
+    public void saveTasks(List<Task> tasks) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (Task task : tasks) {
+                writer.write(task.serialize());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error writing to file: " + e.getMessage());
+        }
+    }
+
     private Task parseTask(String line) {
         String[] parts = line.split(" \\| ");
         String type = parts[0];
