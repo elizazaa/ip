@@ -1,4 +1,8 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Event extends Task {
+    private final LocalDateTime by;
     protected String from;
     protected String to;
     public Event(String description, String from, String to) {
