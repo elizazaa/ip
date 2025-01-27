@@ -1,5 +1,7 @@
 import java.io.*;
 import java.sql.Array;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +58,9 @@ public class Storage {
             case "T":
                 return new Todo(parts[2], isDone);
             case "D":
-                return new Deadline(parts[2], parts[3], isDone);
+                return new Deadline(parts[2],
+                        LocalDateTime.parse(parts[3], DateTimeFormatter.ofPattern("d/M/yyyy HHmm")),
+                        isDone);
             case "E":
                 return new Event(parts[2], parts[3], parts[4], isDone);
             default:
