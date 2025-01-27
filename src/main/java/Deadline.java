@@ -13,14 +13,21 @@ public class Deadline extends Task {
         this.by = by;
     }
 
+    private LocalDateTime parseDateTime(String dateTime) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
+        return LocalDateTime.parse(dateTime, formatter);
+    }
+
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + by + ")";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMM yyyy, h:mma");
+        return "[D][" + (isDone ? "✓" : "✗") + "] " + description + " (by: " + by.format(formatter) + ")";
     }
 
     @Override
     public String serialize() {
-        return "D | " + (isDone ? "1" : "0") + " | " + description + " | " + by;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
+        return "D | " + (isDone ? "1" : "0") + " | " + description + " | " + by.format(formatter);
     }
 
 
