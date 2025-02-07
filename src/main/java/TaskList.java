@@ -27,5 +27,24 @@ public class TaskList {
     public void unmarkTask(int index) {
         tasks.get(index).unmark();
     }
+
+    public Task getTask(int index) {
+        return tasks.get(index);
+    }
+
+    public int getSize() {
+        return tasks.size();
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void listTasks() {
+        System.out.println("Here are the tasks in your list:");
+        for (int i = 0; i < tasks.size(); i++) {
+            System.out.println((i + 1) + ". " + tasks.get(i));
+        }
+    }
 }
 
