@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.List;
 
 public class NickiMinaj {
     private Storage storage;
@@ -9,12 +8,7 @@ public class NickiMinaj {
     public NickiMinaj(String filePath) {
         this.ui = new Ui();
         storage = new Storage(filePath);
-        try {
-            tasks = new TaskList(storage.loadTasks());  // Load tasks from storage
-        } catch (DukeException e) {
-            ui.showLoadingError();
-            tasks = new TaskList();
-        }
+        tasks = new TaskList(storage.loadTasks());
     }
 
     public void run() {
@@ -59,7 +53,7 @@ public class NickiMinaj {
                 ui.showAddedTask(newTask, tasks.getSize());
             } else if (input.startsWith("delete")) {
                 int index = Integer.parseInt(input.split(" ")[1]) - 1;
-                Task removedTask = tasks.remove(index);
+                Task removedTask = tasks.removeTask(index);
                 storage.saveTasks(tasks.getTasks());
                 ui.showDeletedTask(removedTask, tasks.getSize());
             } else {
@@ -68,8 +62,9 @@ public class NickiMinaj {
         }
         scanner.close();
     }
-}
+
 
     public static void main(String[] args) {
         new NickiMinaj("./data/NickiMinaj.txt").run();
     }
+}
