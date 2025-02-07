@@ -5,7 +5,7 @@ public class Parser {
 
         switch (commandType) {
             case "bye":
-                return new ExitCommand();
+                return new ByeCommand();
             case "list":
                 return new ListCommand();
             case "mark":
