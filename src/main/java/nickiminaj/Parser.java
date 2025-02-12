@@ -1,6 +1,12 @@
 package nickiminaj;
 
-import nickiminaj.command.*;
+import nickiminaj.command.AddCommand;
+import nickiminaj.command.ByeCommand;
+import nickiminaj.command.DeleteCommand;
+import nickiminaj.command.ListCommand;
+import nickiminaj.command.MarkCommand;
+import nickiminaj.command.UnmarkCommand;
+import nickiminaj.command.Command;
 import nickiminaj.tasks.Deadline;
 import nickiminaj.tasks.Event;
 import nickiminaj.tasks.Todo;

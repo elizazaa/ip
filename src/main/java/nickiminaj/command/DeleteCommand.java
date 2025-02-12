@@ -1,6 +1,9 @@
 package nickiminaj.command;
 
-import nickiminaj.*;
+import nickiminaj.DukeException;
+import nickiminaj.TaskList;
+import nickiminaj.Ui;
+import nickiminaj.Storage;
 import nickiminaj.tasks.Task;
 
 public class DeleteCommand extends Command {

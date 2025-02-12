@@ -4,7 +4,6 @@ import nickiminaj.DukeException;
 import nickiminaj.Storage;
 import nickiminaj.TaskList;
 import nickiminaj.Ui;
-import nickiminaj.command.Command;
 
 public class UnmarkCommand extends Command {
     private int index;
