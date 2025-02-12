@@ -61,20 +61,19 @@ public class Storage {
         String type = parts[0];
         boolean isDone = parts[1].equals("1");
         switch (type) {
-            case "T":
-                return new Todo(parts[2], isDone);
-            case "D":
-                return new Deadline(parts[2],
-                        LocalDateTime.parse(parts[3], DateTimeFormatter.ofPattern("d/M/yyyy HHmm")),
-                        isDone);
-            case "E":
-                return new Event(parts[2],
-                        LocalDateTime.parse(parts[3], DateTimeFormatter.ofPattern("d/M/yyyy HHmm")),
-                        LocalDateTime.parse(parts[4], DateTimeFormatter.ofPattern("d/M/yyyy HHmm")),
-                        isDone);
-            default:
-                return null;
+        case "T":
+            return new Todo(parts[2], isDone);
+        case "D":
+            return new Deadline(parts[2],
+                    LocalDateTime.parse(parts[3], DateTimeFormatter.ofPattern("d/M/yyyy HHmm")),
+                    isDone);
+        case "E":
+            return new Event(parts[2],
+                    LocalDateTime.parse(parts[3], DateTimeFormatter.ofPattern("d/M/yyyy HHmm")),
+                    LocalDateTime.parse(parts[4], DateTimeFormatter.ofPattern("d/M/yyyy HHmm")),
+                    isDone);
+        default:
+            return null;
         }
-
     }
 }
