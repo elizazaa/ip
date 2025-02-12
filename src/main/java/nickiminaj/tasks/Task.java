@@ -22,8 +22,13 @@ public abstract class Task {
     }
 
     public String getStatusIcon() {
-        return (isDone ? "X" : " "); // X for done, blank for not done
+        return (isDone ? "X" : " ");
     }
+
+    public String getDescription() {
+        return this.description;
+    }
+
 
     @Override
     public String toString() {
