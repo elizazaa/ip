@@ -49,4 +49,15 @@ public class Ui {
         System.out.println("  " + task);
         System.out.println("Now you have " + size + " tasks in the list.");
     }
+
+    public void showMatchingTasks(TaskList Tasks) {
+        if (Tasks.getSize() == 0) {
+            System.out.println("Ain’t nothin’ here");
+        } else {
+            System.out.println("Chile, let’s see what’s giving today. Here's your Tasks:");
+            for (int i = 0; i < Tasks.getSize(); i++) {
+                System.out.println((i + 1) + ". " + Tasks.getTask(i));
+            }
+        }
+    }
 }
