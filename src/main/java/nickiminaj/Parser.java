@@ -13,22 +13,30 @@ public class Parser {
         switch (commandType) {
         case "bye":
             return new ByeCommand();
+            // Fallthrough
         case "list":
             return new ListCommand();
+            // Fallthrough
         case "mark":
             return new MarkCommand(Integer.parseInt(parts[1]) - 1);
+            // Fallthrough
         case "unmark":
             return new UnmarkCommand(Integer.parseInt(parts[1]) - 1);
+            // Fallthrough
         case "todo":
             return new AddCommand(new Todo(parts[1]));
+            // Fallthrough
         case "deadline":
             String[] deadlineParts = parts[1].split(" /by ");
             return new AddCommand(new Deadline(deadlineParts[0], deadlineParts[1]));
+            // Fallthrough
         case "event":
             String[] eventParts = parts[1].split(" /from | /to ");
             return new AddCommand(new Event(eventParts[0], eventParts[1], eventParts[2]));
+            // Fallthrough
         case "delete":
             return new DeleteCommand(Integer.parseInt(parts[1]) - 1);
+            // Fallthrough
         default:
             throw new DukeException("I don't even know what that means... but it sounds mad iconic.");
         }

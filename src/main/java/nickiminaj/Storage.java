@@ -5,7 +5,12 @@ import nickiminaj.tasks.Event;
 import nickiminaj.tasks.Task;
 import nickiminaj.tasks.Todo;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -63,15 +68,18 @@ public class Storage {
         switch (type) {
         case "T":
             return new Todo(parts[2], isDone);
+            // Fallthrough
         case "D":
             return new Deadline(parts[2],
                     LocalDateTime.parse(parts[3], DateTimeFormatter.ofPattern("d/M/yyyy HHmm")),
                     isDone);
+            // Fallthrough
         case "E":
             return new Event(parts[2],
                     LocalDateTime.parse(parts[3], DateTimeFormatter.ofPattern("d/M/yyyy HHmm")),
                     LocalDateTime.parse(parts[4], DateTimeFormatter.ofPattern("d/M/yyyy HHmm")),
                     isDone);
+            // Fallthrough
         default:
             return null;
         }
