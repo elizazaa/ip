@@ -1,6 +1,8 @@
 package nickiminaj.command;
 
-import nickiminaj.*;
+import nickiminaj.TaskList;
+import nickiminaj.Ui;
+import nickiminaj.Storage;
 import nickiminaj.tasks.Task;
 
 /**

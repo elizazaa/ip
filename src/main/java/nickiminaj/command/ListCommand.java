@@ -3,7 +3,6 @@ package nickiminaj.command;
 import nickiminaj.Storage;
 import nickiminaj.TaskList;
 import nickiminaj.Ui;
-import nickiminaj.command.Command;
 
 /**
  * Represents a command that lists all tasks in the task list.

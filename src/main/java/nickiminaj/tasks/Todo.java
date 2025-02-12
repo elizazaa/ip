@@ -1,10 +1,13 @@
 package nickiminaj.tasks;
 
+<<<<<<< HEAD
 import nickiminaj.tasks.Task;
 
 /**
  * Represents a simple to-do task without a specific deadline or event duration.
  */
+=======
+>>>>>>> branch-A-CodingStandard
 public class Todo extends Task {
 
     /**
