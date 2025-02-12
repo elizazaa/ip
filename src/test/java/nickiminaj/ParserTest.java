@@ -31,5 +31,5 @@ public class ParserTest {
         });
         assertEquals("I'm sorry, but I don't know what that means :-(", exception.getMessage());
     }
-    
+
 }

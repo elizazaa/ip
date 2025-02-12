@@ -20,9 +20,9 @@ public class NickiMinaj {
         while (!isExit) {
             try {
                 String fullCommand = ui.readCommand();
-                Command command = Parser.parse(fullCommand); // Get nickiminaj.command.Command object
-                command.execute(tasks, ui, storage); // Execute command
-                isExit = command.isExit(); // Check if exit command
+                Command command = Parser.parse(fullCommand);
+                command.execute(tasks, ui, storage);
+                isExit = command.isExit();
             } catch (DukeException e) {
                 ui.showError(e.getMessage());
             }

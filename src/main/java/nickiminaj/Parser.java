@@ -30,7 +30,7 @@ public class Parser {
             case "delete":
                 return new DeleteCommand(Integer.parseInt(parts[1]) - 1);
             default:
-                throw new DukeException("I'm sorry, but I don't know what that means :-(");
+                throw new DukeException("I don't even know what that means... but it sounds mad iconic.");
         }
     }
 }

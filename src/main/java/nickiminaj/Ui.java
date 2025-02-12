@@ -24,12 +24,8 @@ public class Ui {
         System.out.println("Imma run away Imma run away aye aye");
     }
 
-    public void showLoadingError() {
-        System.out.println("OOPS!!! Error loading tasks.");
-    }
-
     public void showError(String message) {
-        System.out.println("OOPS!!! " + message);
+        System.out.println("Gurl..." + message);
     }
 
     public void showMarkedTask(Task task) {
