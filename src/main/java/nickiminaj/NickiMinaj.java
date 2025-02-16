@@ -32,4 +32,8 @@ public class NickiMinaj {
     public static void main(String[] args) {
         new NickiMinaj("./data/nickiminaj.NickiMinaj.txt").run();
     }
+
+    public String getResponse(String input) {
+        return "Nicki heard: " + input;
+    }
 }
