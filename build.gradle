@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
+
 }
 
 repositories {
@@ -43,12 +44,11 @@ test {
 }
 
 application {
-    mainClass.set("nickiminaj.Launcher")
+    mainClass.set("nickiminaj.Main")
 }
 
 shadowJar {
-    archiveBaseName = "nickiminaj"
-    archiveClassifier.set("")
+    archiveFileName = 'nickiminaj.jar'
 }
 
 run{
