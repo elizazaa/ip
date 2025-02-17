@@ -6,6 +6,7 @@ import nickiminaj.command.DeleteCommand;
 import nickiminaj.command.ListCommand;
 import nickiminaj.command.MarkCommand;
 import nickiminaj.command.UnmarkCommand;
+import nickiminaj.command.InspireCommand;
 import nickiminaj.command.Command;
 import nickiminaj.tasks.Deadline;
 import nickiminaj.tasks.Event;
@@ -43,6 +44,9 @@ public class Parser {
         case "delete":
             return new DeleteCommand(Integer.parseInt(parts[1]) - 1);
             // Fallthrough
+        case "inspire":
+            return new InspireCommand();
+        // Fallthrough
         default:
             throw new DukeException("I don't even know what that means... but it sounds mad iconic.");
         }

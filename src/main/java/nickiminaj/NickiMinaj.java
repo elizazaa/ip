@@ -34,6 +34,11 @@ public class NickiMinaj {
     }
 
     public String getResponse(String input) {
-        return "Nicki heard: " + input;
+        try {
+            Command command = Parser.parse(input);
+            return command.executeWithOutput(tasks, ui, storage);
+        } catch (DukeException e) {
+            return e.getMessage();
+        }
     }
 }

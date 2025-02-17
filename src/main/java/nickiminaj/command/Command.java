@@ -1,9 +1,13 @@
 package nickiminaj.command;
 
 import nickiminaj.DukeException;
+import nickiminaj.NickiMinaj;
 import nickiminaj.Storage;
 import nickiminaj.TaskList;
 import nickiminaj.Ui;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 
 /**
  * An abstract class representing a command that can be executed.
@@ -30,6 +34,18 @@ public abstract class Command {
      */
     public boolean isExit() {
         return false;
+    }
+
+    public String executeWithOutput(TaskList tasks, Ui ui, Storage storage) throws DukeException {
+        // Redirect System.out to capture output
+        PrintStream originalOut = System.out;
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(buffer));
+
+        execute(tasks, ui, storage); // Call the original void method
+
+        System.setOut(originalOut); // Restore standard output
+        return buffer.toString().trim(); // Return captured output as a string
     }
 }
 
