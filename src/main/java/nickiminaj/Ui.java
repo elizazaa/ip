@@ -102,4 +102,12 @@ public class Ui {
         int randomNumber = rand.nextInt(10);
         System.out.println(INSPIRATIONAL_QUOTES.get(randomNumber));
     }
+
+    public void showBarb() {
+        System.out.println("Barbz, stay in school. " +
+                "Don’t you ever be lazy—don’t you ever complain about hard work. Work hard, it pays off. Don’t let " +
+                "anyone tell you that you can’t do something. You wanna be a doctor, a lawyer, an engineer," +
+                " an artist, whatever it is—put in the work, study hard, and don’t give up. I love you, I believe in " +
+                "you, and I want to see all of you winning. Stay focused and stay in school!");
+    }
 }
