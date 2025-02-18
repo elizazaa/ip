@@ -14,8 +14,13 @@ import nickiminaj.tasks.Todo;
 
 public class Parser {
     public static Command parse(String input) throws DukeException {
+        assert input != null : "Error: Input cannot be null!";
+
         String[] parts = input.split(" ", 2);
+        assert parts.length > 0 : "Error: Command cannot be empty!";
+
         String commandType = parts[0];
+        String argument = (parts.length > 1) ? parts[1].trim() : "";
 
         switch (commandType) {
         case "bye":
@@ -31,7 +36,8 @@ public class Parser {
             return new UnmarkCommand(Integer.parseInt(parts[1]) - 1);
             // Fallthrough
         case "todo":
-            return new AddCommand(new Todo(parts[1]));
+            assert !argument.isEmpty() : "Error: 'todo' command requires a description!";
+            return new AddCommand(new Todo(argument));
             // Fallthrough
         case "deadline":
             String[] deadlineParts = parts[1].split(" /by ");
