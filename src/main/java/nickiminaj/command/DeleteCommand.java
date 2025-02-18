@@ -1,6 +1,6 @@
 package nickiminaj.command;
 
-import nickiminaj.DukeException;
+import nickiminaj.NickiMinajException;
 import nickiminaj.TaskList;
 import nickiminaj.Ui;
 import nickiminaj.Storage;
@@ -29,10 +29,10 @@ public class DeleteCommand extends Command {
      * @param tasks   The task list from which the task is removed.
      * @param ui      The user interface to display messages.
      * @param storage The storage to save the updated task list.
-     * @throws DukeException If the index is invalid or out of bounds.
+     * @throws NickiMinajException If the index is invalid or out of bounds.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws NickiMinajException {
         Task removedTask = tasks.removeTask(index);
         storage.saveTasks(tasks.getTasks());
         ui.showDeletedTask(removedTask, tasks.getSize());

@@ -1,6 +1,6 @@
 package nickiminaj.command;
 
-import nickiminaj.DukeException;
+import nickiminaj.NickiMinajException;
 import nickiminaj.NickiMinaj;
 import nickiminaj.Storage;
 import nickiminaj.TaskList;
@@ -24,7 +24,7 @@ public abstract class Command {
      * @param storage The storage system to persist any necessary data.
      * @throws Exception If an error occurs during execution.
      */
-    public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException;
+    public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws NickiMinajException;
 
     /**
      * Determines whether this command signals the program to exit.
@@ -36,7 +36,7 @@ public abstract class Command {
         return false;
     }
 
-    public String executeWithOutput(TaskList tasks, Ui ui, Storage storage) throws DukeException {
+    public String executeWithOutput(TaskList tasks, Ui ui, Storage storage) throws NickiMinajException {
         // Redirect System.out to capture output
         PrintStream originalOut = System.out;
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();

@@ -23,7 +23,7 @@ public class NickiMinaj {
                 Command command = Parser.parse(fullCommand);
                 command.execute(tasks, ui, storage);
                 isExit = command.isExit();
-            } catch (DukeException e) {
+            } catch (NickiMinajException e) {
                 ui.showError(e.getMessage());
             }
         }
@@ -37,7 +37,7 @@ public class NickiMinaj {
         try {
             Command command = Parser.parse(input);
             return command.executeWithOutput(tasks, ui, storage);
-        } catch (DukeException e) {
+        } catch (NickiMinajException e) {
             return e.getMessage();
         }
     }

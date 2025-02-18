@@ -1,6 +1,6 @@
 package nickiminaj.command;
 
-import nickiminaj.DukeException;
+import nickiminaj.NickiMinajException;
 import nickiminaj.Storage;
 import nickiminaj.TaskList;
 import nickiminaj.Ui;
@@ -35,10 +35,10 @@ public class MarkCommand extends Command {
      * @param tasks   The task list containing the task to be marked.
      * @param ui      The user interface to display messages.
      * @param storage The storage to save the updated task list.
-     * @throws DukeException If the index is invalid or out of bounds.
+     * @throws NickiMinajException If the index is invalid or out of bounds.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws NickiMinajException {
         tasks.markTask(index);
         storage.saveTasks(tasks.getTasks());
         ui.showMarkedTask(tasks.getTask(index));

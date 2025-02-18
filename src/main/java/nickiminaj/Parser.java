@@ -13,7 +13,7 @@ import nickiminaj.tasks.Event;
 import nickiminaj.tasks.Todo;
 
 public class Parser {
-    public static Command parse(String input) throws DukeException {
+    public static Command parse(String input) throws NickiMinajException {
         String[] parts = input.split(" ", 2);
         String commandType = parts[0];
 
@@ -48,7 +48,7 @@ public class Parser {
             return new InspireCommand();
         // Fallthrough
         default:
-            throw new DukeException("I don't even know what that means... but it sounds mad iconic.");
+            throw new NickiMinajException("I don't even know what that means... but it sounds mad iconic.");
         }
     }
 }

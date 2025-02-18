@@ -31,7 +31,7 @@ public class MainWindow extends AnchorPane {
     }
 
     /** Injects the Duke instance */
-    public void setDuke(NickiMinaj nm) {
+    public void setNickiMinaj(NickiMinaj nm) {
         nickiMinaj = nm;
     }
 
@@ -45,7 +45,7 @@ public class MainWindow extends AnchorPane {
         String response = nickiMinaj.getResponse(input);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
+                DialogBox.getNickiMinajDialog(response, dukeImage)
         );
         userInput.clear();
     }
