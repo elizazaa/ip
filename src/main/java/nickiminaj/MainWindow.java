@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import nickiminaj.Ui;
 /**
  * Controller for the main GUI.
  */
@@ -22,8 +23,8 @@ public class MainWindow extends AnchorPane {
 
     private NickiMinaj nickiMinaj;
 
-    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/cardib.png"));
-    private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/nickiminaj.png"));
+    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/barb.png"));
+    private Image nickiMinajImage = new Image(this.getClass().getResourceAsStream("/images/nickiminaj.png"));
 
     @FXML
     public void initialize() {
@@ -33,6 +34,12 @@ public class MainWindow extends AnchorPane {
     /** Injects the Duke instance */
     public void setNickiMinaj(NickiMinaj nm) {
         nickiMinaj = nm;
+        showWelcomeMessage();
+    }
+
+    private void showWelcomeMessage() {
+        String welcomeMessage = "Hello! I'm NickiMinaj.\nHow can I assist you today?";
+        dialogContainer.getChildren().add(DialogBox.getNickiMinajDialog(welcomeMessage, nickiMinajImage));
     }
 
     /**
@@ -45,7 +52,7 @@ public class MainWindow extends AnchorPane {
         String response = nickiMinaj.getResponse(input);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getNickiMinajDialog(response, dukeImage)
+                DialogBox.getNickiMinajDialog(response, nickiMinajImage)
         );
         userInput.clear();
     }
