@@ -8,7 +8,7 @@ import nickiminaj.command.MarkCommand;
 import nickiminaj.command.UnmarkCommand;
 import nickiminaj.command.InspireCommand;
 import nickiminaj.command.Command;
-import nickiminaj.NickiMinajException;
+import nickiminaj.command.WelcomeCommand;
 import nickiminaj.command.ViewScheduleCommand;
 import nickiminaj.tasks.Deadline;
 import nickiminaj.tasks.Event;
@@ -33,6 +33,11 @@ public class Parser {
             // Fallthrough
         case "view":
             return new ViewScheduleCommand(argument);
+            //Fallthrough
+        case "hey":
+        case "hi":
+        case "hello":
+            return new WelcomeCommand();
         case "list":
             return new ListCommand();
             // Fallthrough

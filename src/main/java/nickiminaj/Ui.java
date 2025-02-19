@@ -11,37 +11,32 @@ public class Ui {
     private Scanner scanner;
 
     private static final List<String> INSPIRATIONAL_QUOTES = new ArrayList<>(List.of(
-            "You don't have to feel the need to put somebody down to make yourself feel better.",
-            "I came to win, to fight, to conquer, to thrive.",
-            "Your victory is right around the corner. Never give up.",
-            "People will love you and support you when it’s beneficial.",
-            "True confidence leaves no room for jealousy. When you know you are great, you have no need to hate.",
-            "When you’re a girl, you have to be everything, You have to be dope at what you do but you have to be super sweet.",
-            "I stand for girls wanting to be sexy and not apologizing for it.",
-            "You wanna know what scares people? Success.",
-            "I do what I want. I’m unapologetic about it.",
-            "You should never feel afraid to become a piece of art. It’s exhilarating.",
-            "If you don’t take control over your own attitude, someone else will.",
-            "Call it a curse, or just call me blessed. If you can’t handle my worst, you ain’t getting my best.",
-            "Refuse to lose, refuse to be defeated, refuse to have regrets.",
-            "Life is a movie, but there will never be a sequel.",
-            "Stay in school. Don’t ever be lazy, don’t complain about anything. Work hard for what you want.",
-            "No matter what happens, in life, be good to people. Being good to people is a wonderful legacy to leave behind.",
-            "There’s nothing more beautiful than a smile that has struggled through tears.",
-            "Mind over matter. I don’t mind, and you don’t matter.",
-            "Sometimes you don’t realize how far you’ve gotten until you look around at the people who are still trailing behind you.",
-            "Don’t stay watching happiness, make it.",
-            "You are your best thing.",
-            "I believe that life is a prize, but to live doesn’t mean you’re alive.",
-            "I am not a word, I am not a line, I am not a girl that can ever be defined.",
-            "Shout out to my haters, sorry that you couldn’t phase me.",
-            "Never let success get to your head, and never let failure get to your heart.",
-            "Cherish these nights, cherish these people. Life is a movie, but there will never be a sequel.",
-            "They can imitate you, but they can’t duplicate you.",
-            "Your reputation will never be real unless you make it real.",
-            "All things go, all things change.",
-            "Success comes when people act like they didn’t hear you."
-    ));
+            "I came to win, to fight, to conquer, to thrive… but honestly, I also came for the snacks.",
+            "Bad gyal don't die, die, die\n" +
+                    "Hundred rounds on that, grrah-ta-ta",
+            "You done, you tight? You suck at life?\n" +
+                    "You done suffered twice\n" +
+                    "Wo-wo-worship the queen and you might could pass",
+            "You wanna know what scares people? Success. You wanna know what scares me? Running out of lashes before a big event.",
+            "I don’t chase men. I replace them. Like Wi-Fi networks when the signal gets weak.",
+            "They can imitate you, but they can’t duplicate you. Trust me, I tried to clone myself once.",
+            "I'm the queen of rap, young Ariana run pop",
+            "Pull up in the monster, automobile gangsta \n With a bad queen that came from School of Computing",
+            "I am not Jasmine, I am Aladdin / So far ahead, these bums is laggin",
+            "Here go some haterade, get your thirst quenched\n" +
+                    "Style'd on 'em in this Burberry trench\n" +
+                    "These birds copy every word, every inch\n" +
+                    "But gang-gang got the hammer and the wrench (brrt)",
+            "How many of them could've did it with finesse?\n" +
+                    "Now everybody like, \"She really is the best\"\n" +
+                    "You play checkers, couldn't beat me playin' chess",
+            "Barbz, stay in school. " +
+                    "Don’t you ever be lazy—don’t you ever complain about hard work. Work hard, it pays off. Don’t let " +
+                    "anyone tell you that you can’t do something. You wanna be a doctor, a lawyer, an engineer," +
+                    " an artist, whatever it is—put in the work, study hard, and don’t give up. I love you, I believe in " +
+                    "you, and I want to see all of you winning. Stay focused and stay in school!")
+    );
+
 
     public Ui() {
         scanner = new Scanner(System.in);
@@ -99,15 +94,7 @@ public class Ui {
 
     public void showInspiration() {
         Random rand = new Random();
-        int randomNumber = rand.nextInt(10);
+        int randomNumber = rand.nextInt(11);
         System.out.println(INSPIRATIONAL_QUOTES.get(randomNumber));
-    }
-
-    public void showBarb() {
-        System.out.println("Barbz, stay in school. " +
-                "Don’t you ever be lazy—don’t you ever complain about hard work. Work hard, it pays off. Don’t let " +
-                "anyone tell you that you can’t do something. You wanna be a doctor, a lawyer, an engineer," +
-                " an artist, whatever it is—put in the work, study hard, and don’t give up. I love you, I believe in " +
-                "you, and I want to see all of you winning. Stay focused and stay in school!");
     }
 }
