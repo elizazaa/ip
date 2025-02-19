@@ -4,6 +4,7 @@ import nickiminaj.tasks.Deadline;
 import nickiminaj.tasks.Event;
 import nickiminaj.tasks.Task;
 import nickiminaj.tasks.Todo;
+import nickiminaj.tasks.ErrorTask;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,6 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,24 +66,43 @@ public class Storage {
     private Task parseTask(String line) {
         String[] parts = line.split(" \\| ");
         String type = parts[0];
+
+        if (parts.length < 2) {
+            return new ErrorTask("Invalid task format: " + line);
+        }
+
         boolean isDone = parts[1].equals("1");
         switch (type) {
         case "T":
+            if (parts.length < 3) {
+                return new ErrorTask("Invalid Todo format: " + line);
+            }
             return new Todo(parts[2], isDone);
             // Fallthrough
         case "D":
-            return new Deadline(parts[2],
-                    LocalDateTime.parse(parts[3], DateTimeFormatter.ofPattern("d/M/yyyy HHmm")),
-                    isDone);
-            // Fallthrough
+            if (parts.length < 4) {
+                return new ErrorTask("Invalid Deadline format: " + line);
+            }
+            try {
+                LocalDateTime deadline = LocalDateTime.parse(parts[3], DateTimeFormatter.ofPattern("d/M/yyyy HHmm"));
+                return new Deadline(parts[2], deadline, isDone);
+            } catch (DateTimeParseException e) {
+                return new ErrorTask("Invalid date format for Deadline: " + line);
+            }
         case "E":
-            return new Event(parts[2],
-                    LocalDateTime.parse(parts[3], DateTimeFormatter.ofPattern("d/M/yyyy HHmm")),
-                    LocalDateTime.parse(parts[4], DateTimeFormatter.ofPattern("d/M/yyyy HHmm")),
-                    isDone);
+            if (parts.length < 5) {
+                return new ErrorTask("Invalid Event format: " + line);
+            }
+            try {
+                LocalDateTime start = LocalDateTime.parse(parts[3], DateTimeFormatter.ofPattern("d/M/yyyy HHmm"));
+                LocalDateTime end = LocalDateTime.parse(parts[4], DateTimeFormatter.ofPattern("d/M/yyyy HHmm"));
+                return new Event(parts[2], start, end, isDone);
+            } catch (DateTimeParseException e) {
+                return new ErrorTask("Invalid date format for Event: " + line);
+            }
             // Fallthrough
         default:
-            return null;
+            return new ErrorTask("Unknown task type: " + type);
         }
     }
 }
