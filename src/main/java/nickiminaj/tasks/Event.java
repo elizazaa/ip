@@ -1,9 +1,8 @@
 package nickiminaj.tasks;
 
-import nickiminaj.tasks.Task;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
 
 /**
  * Represents an event task with a start and end date-time.
@@ -71,5 +70,10 @@ public class Event extends Task {
         return "[E][" + (isDone ? "✓" : "✗") + "] " + description
                 + " (from: " + from.format(formatter)
                 + " to: " + to.format(formatter) + ")";
+    }
+
+    @Override
+    public boolean isOnDate(LocalDate date) {
+        return this.from.toLocalDate().equals(date) || this.to.toLocalDate().equals(date);
     }
 }

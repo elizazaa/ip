@@ -1,5 +1,7 @@
 package nickiminaj.tasks;
 
+import java.time.LocalDate;
+
 /**
  * Represents an abstract task with a description and completion status.
  * This class provides common functionality for different types of tasks.
@@ -78,4 +80,8 @@ public abstract class Task {
      * @return A formatted string representing the task for storage.
      */
     public abstract String serialize();
+
+    public boolean isOnDate(LocalDate date) {
+        return false;
+    }
 }

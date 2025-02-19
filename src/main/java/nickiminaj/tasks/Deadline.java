@@ -1,9 +1,8 @@
 package nickiminaj.tasks;
 
-import nickiminaj.tasks.Task;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
 
 /**
  * Represents a task with a deadline.
@@ -63,6 +62,10 @@ public class Deadline extends Task {
     public String serialize() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
         return "D | " + (isDone ? "1" : "0") + " | " + description + " | " + by.format(formatter);
+    }
+
+    public boolean isOnDate(LocalDate date) {
+        return this.by.toLocalDate().equals(date); // Assuming `by` is a LocalDateTime
     }
 
 
