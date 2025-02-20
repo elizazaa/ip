@@ -14,8 +14,18 @@ import nickiminaj.tasks.Deadline;
 import nickiminaj.tasks.Event;
 import nickiminaj.tasks.Todo;
 
+/**
+ * The Parser class interprets user commands and returns the corresponding Command object.
+ */
 public class Parser {
 
+    /**
+     * Parses the user input and returns the appropriate Command.
+     *
+     * @param input The user input string.
+     * @return The corresponding Command object.
+     * @throws NickiMinajException If the command is invalid.
+     */
     public static Command parse(String input) throws NickiMinajException {
         assert input != null : "Error: Input cannot be null!";
 
@@ -63,6 +73,14 @@ public class Parser {
         }
     }
 
+    /**
+     * Handles commands related to marking, unmarking, and deleting tasks.
+     *
+     * @param commandType The type of task modification command.
+     * @param argument The task index as a string.
+     * @return The corresponding Command object.
+     * @throws NickiMinajException If the argument is invalid.
+     */
     private static Command handleTaskModification(String commandType, String argument) throws NickiMinajException {
         if (argument.isEmpty()) {
             throw new NickiMinajException("Oops! You need to provide a task number.");
@@ -81,6 +99,13 @@ public class Parser {
         }
     }
 
+    /**
+     * Handles the creation of a Todo task.
+     *
+     * @param argument The description of the task.
+     * @return An AddCommand with the new Todo task.
+     * @throws NickiMinajException If the description is empty.
+     */
     private static Command handleTodo(String argument) throws NickiMinajException {
         if (argument.isEmpty()) {
             throw new NickiMinajException("Barb! you forgot description.");
@@ -88,6 +113,13 @@ public class Parser {
         return new AddCommand(new Todo(argument));
     }
 
+    /**
+     * Handles the creation of a Deadline task.
+     *
+     * @param argument The description and deadline of the task.
+     * @return An AddCommand with the new Deadline task.
+     * @throws NickiMinajException If the format is incorrect.
+     */
     private static Command handleDeadline(String argument) throws NickiMinajException {
         if (!argument.contains(" /by ")) {
             throw new NickiMinajException("Write it like this, queen:\n deadline TASK /by dd/MM/yyyy HHmm.");
@@ -99,6 +131,13 @@ public class Parser {
         return new AddCommand(new Deadline(parts[0], parts[1]));
     }
 
+    /**
+     * Handles the creation of an Event task.
+     *
+     * @param argument The description, start time, and end time of the event.
+     * @return An AddCommand with the new Event task.
+     * @throws NickiMinajException If the format is incorrect.
+     */
     private static Command handleEvent(String argument) throws NickiMinajException {
         if (!argument.contains(" /from ") || !argument.contains(" /to ")) {
             throw new NickiMinajException("Write it like this, queen:" +
