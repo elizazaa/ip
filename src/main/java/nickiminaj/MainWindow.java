@@ -38,7 +38,7 @@ public class MainWindow extends AnchorPane {
     }
 
     private void showWelcomeMessage() {
-        String welcomeMessage = "Hello! I'm NickiMinaj.\nHow can I assist you today?";
+        String welcomeMessage = "Hello! I'm the Queen of Rap rrr.\n whatchu wanna do, Barb?" ;
         dialogContainer.getChildren().add(DialogBox.getNickiMinajDialog(welcomeMessage, nickiMinajImage));
     }
 

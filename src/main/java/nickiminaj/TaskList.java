@@ -45,7 +45,7 @@ public class TaskList {
     }
 
     public void listTasks() {
-        System.out.println("Chile, let’s see what’s giving today. Here's your Tasks:");
+        System.out.println("Chile, let’s see what’s giving today! ");
         for (int i = 0; i < tasks.size(); i++) {
             System.out.println((i + 1) + ". " + tasks.get(i));
         }

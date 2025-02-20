@@ -69,7 +69,7 @@ public class Parser {
         }
         try {
             int taskIndex = Integer.parseInt(argument) - 1;
-            assert taskIndex >= 0 : "Error: Task index must be non-negative!";
+            assert taskIndex >= 0 : "Barb! Task index must be non-negative!";
             return switch (commandType) {
                 case "mark" -> new MarkCommand(taskIndex);
                 case "unmark" -> new UnmarkCommand(taskIndex);
@@ -77,20 +77,20 @@ public class Parser {
                 default -> throw new NickiMinajException("I don't even know what that means... but it sounds mad iconic.");
             };
         } catch (NumberFormatException e) {
-            throw new NickiMinajException("Invalid task number! Please enter a valid number.");
+            throw new NickiMinajException("Enter a valid number, Barb.");
         }
     }
 
     private static Command handleTodo(String argument) throws NickiMinajException {
         if (argument.isEmpty()) {
-            throw new NickiMinajException("Oops! The 'todo' command requires a description.");
+            throw new NickiMinajException("Barb! you forgot description.");
         }
         return new AddCommand(new Todo(argument));
     }
 
     private static Command handleDeadline(String argument) throws NickiMinajException {
         if (!argument.contains(" /by ")) {
-            throw new NickiMinajException("Oops! The 'deadline' command must be in the format: deadline TASK /by DATE.");
+            throw new NickiMinajException("Write it like this, queen:\n deadline TASK /by dd/MM/yyyy HHmm.");
         }
         String[] parts = argument.split(" /by ", 2);
         if (parts.length < 2 || parts[1].trim().isEmpty()) {
@@ -101,11 +101,12 @@ public class Parser {
 
     private static Command handleEvent(String argument) throws NickiMinajException {
         if (!argument.contains(" /from ") || !argument.contains(" /to ")) {
-            throw new NickiMinajException("Oops! The 'event' command must be in the format: event TASK /from START /to END.");
+            throw new NickiMinajException("Write it like this, queen:" +
+                    "\nevent TASK /from dd/MM/yyyy HHmm /to dd/MM/yyyy HHmm.");
         }
         String[] parts = argument.split(" /from | /to ", 3);
         if (parts.length < 3 || parts[1].trim().isEmpty() || parts[2].trim().isEmpty()) {
-            throw new NickiMinajException("Oops! You must specify both start and end times.");
+            throw new NickiMinajException("Barb! you forgot start and end times.");
         }
         return new AddCommand(new Event(parts[0], parts[1], parts[2]));
     }
