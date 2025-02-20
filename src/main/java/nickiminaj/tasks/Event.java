@@ -15,8 +15,8 @@ public class Event extends Task {
      * Constructs an Event task with the specified description and time period.
      *
      * @param description The description of the event.
-     * @param from The start time of the event in string format (d/M/yyyy HHmm).
-     * @param to The end time of the event in string format (d/M/yyyy HHmm).
+     * @param from The start time of the event in string format (d/MM/yyyy HHmm).
+     * @param to The end time of the event in string format (d/MM/yyyy HHmm).
      */
     public Event(String description, String from, String to) {
         super(description);
@@ -41,11 +41,12 @@ public class Event extends Task {
     /**
      * Parses a date-time string into a LocalDateTime object.
      *
-     * @param dateTime The date-time string in the format d/M/yyyy HHmm.
+     * @param dateTime The date-time string in the format dd/MM/yyyy HHmm.
      * @return The parsed LocalDateTime object.
      */
     private LocalDateTime parseDateTime(String dateTime) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
+        assert dateTime != null && !dateTime.trim().isEmpty() : "Error: DateTime string cannot be null or empty.";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
         return LocalDateTime.parse(dateTime, formatter);
     }
 
@@ -56,7 +57,13 @@ public class Event extends Task {
      */
     @Override
     public String serialize() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
+        String formattedFrom = from.format(formatter);
+        String formattedTo = to.format(formatter);
+
+        assert formattedFrom != null && !formattedFrom.trim().isEmpty() : "Error: Serialized start date must not be empty.";
+        assert formattedTo != null && !formattedTo.trim().isEmpty() : "Error: Serialized end date must not be empty.";
+
         return "E | " + (isDone ? "1" : "0") + " | " + description + " | "
                 + from.format(formatter) + " | " + to.format(formatter);
     }
@@ -67,11 +74,24 @@ public class Event extends Task {
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMM yyyy, h:mma");
+
+        String formattedFrom = from.format(formatter);
+        String formattedTo = to.format(formatter);
+
+        assert formattedFrom != null && !formattedFrom.trim().isEmpty() : "Error: Formatted start date must not be empty.";
+        assert formattedTo != null && !formattedTo.trim().isEmpty() : "Error: Formatted end date must not be empty.";
+
         return "[E][" + (isDone ? "✓" : "✗") + "] " + description
                 + " (from: " + from.format(formatter)
                 + " to: " + to.format(formatter) + ")";
     }
 
+    /**
+     * Checks if the event occurs on a specific date.
+     *
+     * @param date The date to check.
+     * @return True if the event is on the specified date, false otherwise.
+     */
     @Override
     public boolean isOnDate(LocalDate date) {
         return this.from.toLocalDate().equals(date) || this.to.toLocalDate().equals(date);

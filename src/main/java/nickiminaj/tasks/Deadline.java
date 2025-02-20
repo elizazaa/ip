@@ -36,11 +36,11 @@ public class Deadline extends Task {
     /**
      * Parses a date-time string into a LocalDateTime object.
      *
-     * @param dateTime The date-time string in the format d/M/yyyy HHmm.
+     * @param dateTime The date-time string in the format dd/MM/yyyy HHmm.
      * @return The parsed LocalDateTime object.
      */
     private LocalDateTime parseDateTime(String dateTime) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
         return LocalDateTime.parse(dateTime, formatter);
     }
 
@@ -51,7 +51,9 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMM yyyy, h:mma");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy, h:mma");
+        String formattedDate = by.format(formatter);
+        assert formattedDate != null && !formattedDate.trim().isEmpty() : "Error: Formatted date must not be empty.";
         return "[D][" + (isDone ? "✓" : "✗") + "] " + description + " (by: " + by.format(formatter) + ")";
     }
 
@@ -60,13 +62,19 @@ public class Deadline extends Task {
      */
     @Override
     public String serialize() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
+        String formattedDate = by.format(formatter);
+        assert formattedDate != null && !formattedDate.trim().isEmpty() : "Error: Serialized date must not be empty.";
         return "D | " + (isDone ? "1" : "0") + " | " + description + " | " + by.format(formatter);
     }
 
+    /**
+     * Checks if the deadline is on a specific date.
+     *
+     * @param date The date to check.
+     * @return True if the deadline is on the specified date, false otherwise.
+     */
     public boolean isOnDate(LocalDate date) {
-        return this.by.toLocalDate().equals(date); // Assuming `by` is a LocalDateTime
+        return this.by.toLocalDate().equals(date);
     }
-
-
 }

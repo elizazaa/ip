@@ -81,6 +81,12 @@ public abstract class Task {
      */
     public abstract String serialize();
 
+    /**
+     * Checks if the event or task occurs on the specified date.
+     *
+     * @param date The date to check.
+     * @return {@code true} if the event or task falls on the specified date, {@code false} otherwise.
+     */
     public boolean isOnDate(LocalDate date) {
         return false;
     }
