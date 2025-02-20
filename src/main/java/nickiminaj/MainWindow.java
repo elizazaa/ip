@@ -28,6 +28,11 @@ public class MainWindow extends AnchorPane {
 
     @FXML
     public void initialize() {
+        assert scrollPane != null : "Error: scrollPane is not initialized!";
+        assert dialogContainer != null : "Error: dialogContainer is not initialized!";
+        assert userInput != null : "Error: userInput is not initialized!";
+        assert sendButton != null : "Error: sendButton is not initialized!";
+
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
     }
 
@@ -48,6 +53,10 @@ public class MainWindow extends AnchorPane {
      */
     @FXML
     private void handleUserInput() {
+        assert userInput != null : "Error: userInput field is not initialized!";
+        assert dialogContainer != null : "Error: dialogContainer is not initialized!";
+        assert nickiMinaj != null : "Error: NickiMinaj instance is not initialized!";
+        
         String input = userInput.getText();
         String response = nickiMinaj.getResponse(input);
         dialogContainer.getChildren().addAll(
