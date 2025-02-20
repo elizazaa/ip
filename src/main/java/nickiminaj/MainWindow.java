@@ -56,7 +56,7 @@ public class MainWindow extends AnchorPane {
         assert userInput != null : "Error: userInput field is not initialized!";
         assert dialogContainer != null : "Error: dialogContainer is not initialized!";
         assert nickiMinaj != null : "Error: NickiMinaj instance is not initialized!";
-        
+
         String input = userInput.getText();
         String response = nickiMinaj.getResponse(input);
         dialogContainer.getChildren().addAll(
