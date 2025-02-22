@@ -44,10 +44,13 @@ test {
 }
 
 application {
-    mainClass.set("nickiminaj.Main")
+    mainClass.set("nickiminaj.Launcher")
+    applicationDefaultJvmArgs = ["-ea"]
 }
 
 shadowJar {
+    archiveBaseName = "nickiminaj"
+    archiveClassifier = null
     archiveFileName = 'nickiminaj.jar'
 }
 
